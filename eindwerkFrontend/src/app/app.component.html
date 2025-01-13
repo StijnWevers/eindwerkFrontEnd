@@ -30,8 +30,18 @@
         <span>HelpR</span>
     </div>
 </nav>
+  <button (click)="showLoginPopup()">Login</button>
+<app-login
+  *ngIf="isLoginPopupVisible"
+  [isVisible]="isLoginPopupVisible"
+  (login)="handleLogin($event)"
+  (close)="hideLoginPopup()"
+></app-login>
 
 </body>
 </html>
 
 <router-outlet></router-outlet>
+
+
+
