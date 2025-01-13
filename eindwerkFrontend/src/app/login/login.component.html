@@ -1,0 +1,30 @@
+<div class="overlay" *ngIf="isVisible">
+    <div class="popup">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+          required
+        />
+  
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        />
+  
+        <div class="actions">
+          <button type="button" (click)="closePopup()">Cancel</button>
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

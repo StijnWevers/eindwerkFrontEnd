@@ -5,3 +5,11 @@
     <a routerLink="/settings">Settings</a>
     <a routerLink="/profile">Profile</a>
 </nav>
+
+<button (click)="showLoginPopup()">Login</button>
+<app-login
+  *ngIf="isLoginPopupVisible"
+  [isVisible]="isLoginPopupVisible"
+  (login)="handleLogin($event)"
+  (close)="hideLoginPopup()"
+></app-login>
