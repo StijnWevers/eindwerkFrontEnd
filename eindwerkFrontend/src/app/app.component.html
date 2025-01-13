@@ -11,44 +11,49 @@
 </head>
 
 <body>
-
     <nav class="header">
 
         <div class="header-buttons">
-            <a href="#" class="headerbtn">Home</a>
-            <a href="#" class="headerbtn">Messages</a>
+            <a href="#" class="Home">Home</a>
+            <a href="#" class="Berichten">Berichten</a>
             <a href="#" class="bel">
                 <img src="bel.png" alt="Notifications">
             </a>
+
+            <button>Zoeken</button>
+
+            <button> instellingen</button>
+
+            <button>Post</button>
+
         </div>
 
-        <form class="header-search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="search-button" type="submit">Search</button>
-        </form>
 
         <div class="header-logo">
-            <img src="user.png" alt="Logo">
-            <span>HelpR</span>
+            <img src="1159740.png" alt="Logo">
+        </div>
+
+    </nav>
+    <nav>
+        <div class="search-you">
+            <input type="search" placeholder="Wat Heb je nodig?" class="watnodig">
+
+            <select name="dropdown" class="locatie">
+                <option value="500m">500m</option>
+                <option value="1km">1km</option>
+                <option value="1.5km">1.5km</option>
+                <option value="2km">2km</option>
+                <option value="5km">5km</option>
+            </select>
+
+            <button type="submit">Zoeken</button>
+
+            <button>Post</button>
         </div>
     </nav>
     <button (click)="showLoginPopup()">Login</button>
     <app-login *ngIf="isLoginPopupVisible" [isVisible]="isLoginPopupVisible" (login)="handleLogin($event)"
         (close)="hideLoginPopup()"></app-login>
-
-
-
-
-
-
-    <footer class="footermain">
-        <div>
-            <p>About us</p>
-            <p>blog</p>
-            <p>help</p>
-            <p>contact</p>
-        </div>
-    </footer>
 
 </body>
 
