@@ -14,17 +14,14 @@
     <nav class="header">
         
         <div class="header-buttons">
-            <a href="#" class="Home">Home</a>
-            <a href="#" class="Berichten">Berichten</a>
-            <a href="#" class="bel">
+            <a routerLink="/home" class="Home">Home</a>
+            <a routerLink="/messages" class="Berichten">Berichten</a>
+            <a routerLink="/notifications" class="bel">
                 <img src="bel.png" alt="Notifications">
             </a>
-
-            <a href="#" class="Zoeken">Zoeken</a>
-
-            <a href="#" class="Instellingen"> instellingen</a>
- 
-            <a href="#" class="Post">Post</a>
+            <a routerLink="/zoeken" class="Zoeken">Zoeken</a>
+            <a routerLink="/settings" class="Instellingen">Instellingen</a>
+            <a routerLink="/post" class="Post">Post</a>
 
         </div>
 
@@ -55,10 +52,11 @@
     <app-login *ngIf="isLoginPopupVisible" [isVisible]="isLoginPopupVisible" (login)="handleLogin($event)"
         (close)="hideLoginPopup()"></app-login>
 
+    <div class="content-wrapper p-4">
+        <router-outlet></router-outlet>
+    </div>
+
 </body>
-
-<router-outlet></router-outlet>
-
 
 </html>
 
