@@ -116,3 +116,18 @@
   box-sizing: border-box;
   resize: none;
 }
+
+.content-wrapper {
+  margin-left: 200px;  /* Keep existing left margin for nav */
+  padding: 20px;
+  min-height: 100vh;   /* Full viewport height */
+  background-color: #f8f9fa;  /* Light background */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
