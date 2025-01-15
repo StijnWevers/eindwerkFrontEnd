@@ -12,31 +12,29 @@
 
 <body>
     <nav class="header">
-
+        
         <div class="header-buttons">
-            <a href="#" class="Home">Home</a>
-            <a href="#" class="Berichten">Berichten</a>
-            <a href="#" class="bel">
+            <a routerLink="/home" class="Home">Home</a>
+            <a routerLink="/messages" class="Berichten">Berichten</a>
+            <a routerLink="/notifications" class="bel">
                 <img src="bel.png" alt="Notifications">
             </a>
-
-            <button>Zoeken</button>
-
-            <button> instellingen</button>
-
-            <button>Post</button>
+            <a routerLink="/zoeken" class="Zoeken">Zoeken</a>
+            <a routerLink="/settings" class="Instellingen">Instellingen</a>
+            <a routerLink="/post" class="Post">Post</a>
 
         </div>
 
-
+        
         <div class="header-logo">
-            <img src="1159740.png" alt="Logo">
+            <img src="user.png" alt="Logo">
         </div>
 
     </nav>
+
     <nav>
         <div class="search-you">
-            <input type="search" placeholder="Wat Heb je nodig?" class="watnodig">
+            <input type="search" placeholder="Wat Heb je nodig?" class="wat-nodig">
 
             <select name="dropdown" class="locatie">
                 <option value="500m">500m</option>
@@ -47,13 +45,13 @@
             </select>
 
             <button type="submit">Zoeken</button>
-
-            <button>Post</button>
         </div>
     </nav>
+
     <button (click)="showLoginPopup()">Login</button>
     <app-login *ngIf="isLoginPopupVisible" [isVisible]="isLoginPopupVisible" (login)="handleLogin($event)"
         (close)="hideLoginPopup()"></app-login>
+
 
     <footer>
         <div class="footer-columns">
@@ -93,12 +91,12 @@
 
 
 
+    <div class="content-wrapper p-4">
+        <router-outlet></router-outlet>
+    </div>
 
 
 </body>
 
-
-
 </html>
 
-<router-outlet></router-outlet>

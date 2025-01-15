@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 
@@ -8,7 +8,8 @@ import { LoginComponent } from './login/login.component';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
+    RouterOutlet,
+    RouterLink,
     LoginComponent
   ],
   templateUrl: './app.component.html',
