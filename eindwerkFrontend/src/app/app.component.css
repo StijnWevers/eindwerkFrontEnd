@@ -1,3 +1,4 @@
+/* Header Styles */
 .header {
   background-color: #e36d32;
   color: white;
@@ -6,10 +7,12 @@
   left: 0;
   top: 0;
   height: 100vh;
+  width: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  z-index: 100;
 }
 
 .header-logo {
@@ -82,7 +85,7 @@
   object-fit: contain;
 }
 
-/* Dit is het nieuwe deel */
+/* Search Styles */
 .search-you {
   display: flex;
   align-items: center;
@@ -97,9 +100,10 @@
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  box-sizing: border;
+  box-sizing: border-box;
 }
 
+/* Post Styles */
 .post-for-you {
   display: flex;
   align-items: center;
@@ -117,16 +121,25 @@
   resize: none;
 }
 
-footer {
+/* Content Wrapper */
+.content-wrapper {
   margin-left: 270px;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+footer {
   background-color: #e36d32;
-  padding: 40px 20px 20px;
   color: white;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  left: 270px;
+  right: 0;
+  padding: 40px 20px 20px;
+  z-index: 99;
 }
 
 .footer-columns {
@@ -163,10 +176,22 @@ footer {
   font-size: 12px;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
-  footer {
-    margin-left: 0;
+  .header {
     width: 100%;
+    height: auto;
+  }
+
+  .content-wrapper {
+    margin-left: 0;
+    padding: 15px;
+    margin-top: 60px;
+  }
+
+  footer {
+    left: 0;
+    position: relative;
   }
 
   .footer-columns {
@@ -176,20 +201,5 @@ footer {
 
   .footer-column {
     margin-bottom: 30px;
-  }
-}
-
-.content-wrapper {
-  margin-left: 200px; /* Keep existing left margin for nav */
-  padding: 20px;
-  min-height: 100vh; /* Full viewport height */
-  background-color: #f8f9fa; /* Light background */
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-@media (max-width: 768px) {
-  .content-wrapper {
-    margin-left: 0;
-    padding: 15px;
   }
 }
