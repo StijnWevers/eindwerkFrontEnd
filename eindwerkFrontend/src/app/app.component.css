@@ -124,7 +124,9 @@ footer {
   color: white;
   position: fixed;
   bottom: 0;
-  width: calc(100% - 270px);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .footer-columns {
