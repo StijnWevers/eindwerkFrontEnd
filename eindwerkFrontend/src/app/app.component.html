@@ -49,6 +49,11 @@
             <button type="submit">Zoeken</button>
         </div>
     </nav>
+    
+    <div class="content-wrapper p-4">
+        <router-outlet></router-outlet>
+    </div>
+
 
     <button (click)="showLoginPopup()">Login</button>
     <app-login *ngIf="isLoginPopupVisible" [isVisible]="isLoginPopupVisible" (login)="handleLogin($event)"
@@ -88,12 +93,6 @@
         </div>
     </footer>
 
-
-
-
-    <div class="content-wrapper p-4">
-        <router-outlet></router-outlet>
-    </div>
 
 
 </body>
