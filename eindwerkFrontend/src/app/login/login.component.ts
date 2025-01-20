@@ -9,18 +9,26 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   @Input() isVisible = false;
-  @Output() login = new EventEmitter<{ username: string; password: string }>();
+  @Output() login = new EventEmitter<{ email: string; password: string }>();
   @Output() close = new EventEmitter<void>();
 
-  username = '';
+  email = '';
   password = '';
+  errorMessage = '';
+  
 
   onSubmit(): void {
-    this.login.emit({ username: this.username, password: this.password });
-    this.closePopup();
+    console.log('Form submitted');
+    if (this.email && this.password) {
+      this.login.emit({ email: this.email, password: this.password });
+    } else {
+      this.errorMessage = 'Please fill in both fields.';
+    }
   }
+  
 
   closePopup(): void {
     this.close.emit();
