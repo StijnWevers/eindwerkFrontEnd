@@ -1,1 +1,14 @@
-<p>home works!</p>
+
+<div class="main-progress-bar-container">
+    <div class="main-progress-bar"></div>
+</div>
+
+<div id="user-container" [innerHTML]="usersHTML"></div>
+
+<div id="popup" class="popup-container">
+    <div class="popup-content">
+        <h2>Proficiat aan de buurt!</h2>
+        <p>De voortgangsbalk is volledig! Dit betekend groot feest!</p>
+        <button (click)="closePopup()">Sluiten</button>
+    </div>
+</div>
