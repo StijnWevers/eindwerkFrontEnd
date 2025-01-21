@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="https://via.placeholder.com/150" alt="Profielfoto" class="profile-picture" />
+        <h1>{{ user.name }}</h1>
+        <p>{{ user.email }}</p>
+    </div>
+
+    <div class="profile-info">
+        <h2>Persoonlijke Informatie</h2>
+        <ul>
+            <li><strong>Gebruikersnaam:</strong> {{ user.username }}</li>
+            <li><strong>Telefoonnummer:</strong> {{ user.phone }}</li>
+            <li><strong>Locatie:</strong> {{ user.location }}</li>
+        </ul>
+    </div>
+
+    <button class="edit-button" (click)="editProfile()">Profiel Bewerken</button>
+</div>
