@@ -17,13 +17,7 @@
     transition: width 0.3s ease;
     border-radius: 5px;
   }
-  
-  /* Styling voor de random nummer tekst */
-  .random-number {
-    font-size: 14px;
-    color: gray;
-    margin-top: 5px;
-  }
+
   
   /* Styling voor de knop om de voortgang toe te voegen */
   .add-progress-btn {
@@ -32,6 +26,7 @@
     color: white;
     border: none;
     padding: 10px 20px;
+    border-radius: 5px;
   }
   
   /* Hover-effect voor de knop */
@@ -53,10 +48,11 @@
   }
   
   .popup-content {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .post-container {
@@ -65,14 +61,28 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 80%;
-    max-width: 1000px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    margin-bottom: 90px;
 
 }
-
+/* Styling voor de pop-up tekst */
+.popup-text {
+    font-size: 30px;
+    font-style: bold;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Styling voor de knop om de pop-up te sluiten */
+.close-button {
+    background-color: #165aa2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .profile-picture {
     border-radius: 20%;
