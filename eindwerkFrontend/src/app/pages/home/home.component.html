@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="main-progress-bar-container">
+    <div class="main-progress-bar" [style.width.%]="mainProgressBar"></div>
+  </div>
+
+@for (user of users(); track user.id) {
+    
+    <div class ="post-container">
+        <div class="post-header">
+            <img class="profile-picture" src="{{user.picture.thumbnail}}" alt="">
+            <div class="user-details">
+                <div class="name">{{user.name.first}} {{user.name.last}} </div>
+                <div class="username">{{user.login.username}} </div>
+            </div>
+        </div>
+        <div class="post-info">
+            <div class="zoekertje">
+                <p>Ik zoek een persoon om te helpen met een taak.</p>
+            </div>
+            <div class="post-locatie">
+                <p><strong>Location:</strong> Genk</p>
+            </div>
+        </div>
+        <button (click)="updateMainProgressBar(10)" class="add-progress-btn">Voeg taak toe</button>
+
+        <div id="popup" class="popup-container">
+            <div class="popup-content">
+              <p class="popup-text">Proficiat! De buurt krijgt een groot feest!</p>
+              <button class ="close-button" onclick="document.getElementById('popup').style.display = 'none';">Close</button>
+            </div>
+        </div>
+        
+    </div>
+}
