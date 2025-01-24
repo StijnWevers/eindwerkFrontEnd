@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class DatabaseService {
 
   constructor() { }
-  apiUrl = 'https://randomuser.me/api?results=15&nat=NL';
-  async getUsers() {
+
+  GetThisAPI = 'http://127.0.0.1:8000/api/jobs';
+
+  async GetProfile() {
     try {
-      const response = await fetch(`${this.apiUrl}`);
+      const response = await fetch(`${this.GetThisAPI}`);
       const data = await response.json();
       return data;
     } catch (error) {

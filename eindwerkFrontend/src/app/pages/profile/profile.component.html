@@ -1,18 +1,22 @@
+<p>Profile Works</p>
+test
+{{jobs() | json}}
 
-@for (user of users(); track user.id) {
+@for (job of jobs(); track job.id) {
+    
     <div class="profile-container">
         <div class="profile-header">
-            <img src="{{user.picture.thumbnail}}" alt="Profielfoto" class="profile-picture" />
-            <h1>{{user.name.first}} {{user.name.last}}</h1>
-            <p>{{ user.email }}</p>
+            <img src="" alt="Profielfoto" class="profile-picture" />
+            <h1>{{job.id}}<!--{{user.name.last}}  --></h1>
+            <p><!--{{ user.email }}--></p>
         </div>
 
         <div class="profile-info">
             <h2>Persoonlijke Informatie</h2>
             <ul>
-                <li><strong>Gebruikersnaam:</strong> {{user.login.username}}</li>
-                <li><strong>Telefoonnummer:</strong> {{ user.phone }}</li>
-                <li><strong>Locatie:</strong> {{ user.location.city }}</li>
+                <li><strong>Gebruikersnaam:</strong> test<!-- {{user.login.username}}--></li>
+                <li><strong>Telefoonnummer:</strong> Test<!--{{ user.phone }}--></li>
+                <li><strong>Locatie:</strong> test<!--{{ user.location.city }}--></li>
             </ul>
         </div>
 
