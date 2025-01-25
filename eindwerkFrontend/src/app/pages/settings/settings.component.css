@@ -1,19 +1,16 @@
-/* Pagina styling */
 .settings-page {
   display: flex;
-  justify-content: center; /* Horizontaal centreren */
-  align-items: center; /* Verticaal centreren */
-  height: 100vh; /* Volledige hoogte van het scherm */
-  background-color: #f4f4f9; /* Lichte achtergrondkleur */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
 }
 
-/* Container styling */
 .settings-container {
-  width: 600px; /* Breder venster */
-  max-width: 90%; /* Zorgt dat het venster responsief blijft op kleine schermen */
-  padding: 20px;
+  width: 600px;
+  padding: 30px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 9px #e36d32;
   text-align: center;
 }
