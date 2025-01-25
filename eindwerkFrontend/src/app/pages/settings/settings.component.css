@@ -30,7 +30,7 @@
 /* Styling knoppen */
 .settings-section button {
   display: inline-block;
-  margin: 5px 0;
+  margin: 5px 2px;
   padding: 10px 15px;
   border: none;
   border-radius: 7px;
