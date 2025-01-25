@@ -1,0 +1,45 @@
+.settings-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+}
+
+.settings-container {
+  width: 600px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 9px #e36d32;
+  text-align: center;
+}
+
+/* knoppen */
+.settings-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.settings-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Styling knoppen */
+.settings-section button {
+  display: inline-block;
+  margin: 5px 0;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+}
+
+.settings-section button:hover {
+  background-color: #0056b3;
+}
