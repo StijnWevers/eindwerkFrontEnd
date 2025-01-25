@@ -7,10 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './settings.component.css',
 })
 export class SettingsComponent {
-  currentLanguage: string = 'Nederlands';
+  showLanguageOptions: boolean = false; // Controleert of de opties zichtbaar zijn
+
+  toggleLanguageOptions(): void {
+    this.showLanguageOptions = !this.showLanguageOptions; // Wisselt tussen zichtbaar en onzichtbaar
+  }
 
   setLanguage(language: string): void {
-    this.currentLanguage = language;
     alert(`Taal gewijzigd naar: ${language}`);
+    this.showLanguageOptions = false; // Verberg de opties na selectie
   }
 }
