@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 export class SettingsComponent {
   currentLanguage: string = 'Nederlands';
 
-  // setLanguage(language: string): void {
-  //   this.currentLanguage = language;
-  //   alert(`Taal gewijzigd naar: ${language}`);
-  // }
+  setLanguage(language: string): void {
+    this.currentLanguage = language;
+    alert(`Taal gewijzigd naar: ${language}`);
+  }
 }
