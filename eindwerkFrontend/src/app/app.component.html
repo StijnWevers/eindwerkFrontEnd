@@ -32,12 +32,20 @@
         <div class="header-logo">
             <img src="user.png" alt="Logo">
             <button (click)="showLoginPopup()">Login</button>
+            <button (click)="showRegisterPopup()">Register</button>
             <app-login
               *ngIf="isLoginPopupVisible"
               [isVisible]="isLoginPopupVisible"
               (login)="handleLogin($event)"
               (close)="hideLoginPopup()">
             </app-login>
+
+            <app-register
+                *ngIf="isRegisterPopupVisible"
+                [isVisible]="isRegisterPopupVisible"
+                (register)="handleRegister($event)"
+                (close)="hideRegisterPopup()">
+            </app-register>
           </div>
           
 

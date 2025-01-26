@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service'; 
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,37 +12,69 @@ import { AuthService } from './services/auth.service';
     CommonModule,
     RouterOutlet,
     RouterLink,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HelpR'; 
+  title = 'HelpR';
   isLoginPopupVisible = false;
+  isRegisterPopupVisible = false;
   errorMessage = '';
 
   constructor(private authService: AuthService) {}
 
   showLoginPopup(): void {
     this.isLoginPopupVisible = true;
+    this.errorMessage = '';
   }
 
   hideLoginPopup(): void {
     this.isLoginPopupVisible = false;
-    this.errorMessage = ''; 
+    this.errorMessage = '';
   }
 
   handleLogin(credentials: { email: string; password: string }): void {
     this.authService.login(credentials.email, credentials.password).subscribe({
       next: (response) => {
         console.log('Login successful:', response);
-        this.hideLoginPopup(); 
+        this.hideLoginPopup();
       },
       error: (err) => {
         this.errorMessage = 'Login failed. Please check your email and password.';
         console.error('Login error:', err);
       }
+    });
+  }
+
+  showRegisterPopup(): void {
+    this.isRegisterPopupVisible = true;
+    this.errorMessage = '';
+  }
+
+  hideRegisterPopup(): void {
+    this.isRegisterPopupVisible = false;
+    this.errorMessage = '';
+  }
+
+  handleRegister(data: {
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
+    password_confirmation: string; // Voeg dit veld ook hier toe
+  }): void {
+    this.authService.register(data).subscribe({
+      next: (response) => {
+        console.log('Registration successful:', response);
+        this.hideRegisterPopup();
+      },
+      error: (err) => {
+        this.errorMessage = 'Registration failed. Please try again.';
+        console.error('Registration error:', err);
+      },
     });
   }
 }
