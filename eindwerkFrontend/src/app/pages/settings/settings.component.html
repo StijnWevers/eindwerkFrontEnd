@@ -1,14 +1,16 @@
 <div class="settings-page">
     <div class="settings-container">
-        <h1>Instellingen</h1>
-        <button (click)="toggleLanguageOptions()">
-            taal</button>
-        <div *ngIf="showLanguageOptions" class="language-options">
+        <!-- Dynamisch de titel -->
+        <h1>{{ translations[currentLanguage].settingsTitle }}</h1>
+
+        <div class="settings-section">
+            <!-- Dynamisch de subtitel -->
+            <h2>{{ translations[currentLanguage].languageSectionTitle }}</h2>
+
+            <!-- Knoppen blijven in principe gelijk, want die tonen de talen zelf -->
             <button (click)="setLanguage('Nederlands')">Nederlands</button>
             <button (click)="setLanguage('Engels')">Engels</button>
             <button (click)="setLanguage('Chinees')">Chinees</button>
         </div>
     </div>
-
-
 </div>
