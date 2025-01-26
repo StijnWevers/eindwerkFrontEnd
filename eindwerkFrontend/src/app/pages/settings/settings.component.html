@@ -1,16 +1,23 @@
 <div class="settings-page">
     <div class="settings-container">
-        <!-- Dynamisch de titel -->
+
         <h1>{{ translations[currentLanguage].settingsTitle }}</h1>
 
         <div class="settings-section">
-            <!-- Dynamisch de subtitel -->
+
             <h2>{{ translations[currentLanguage].languageSectionTitle }}</h2>
 
-            <!-- Knoppen blijven in principe gelijk, want die tonen de talen zelf -->
+
             <button (click)="setLanguage('Nederlands')">Nederlands</button>
             <button (click)="setLanguage('Engels')">Engels</button>
             <button (click)="setLanguage('Chinees')">Chinees</button>
+        </div>
+
+        <div class="settings-section link-container">
+            <a href="#" class="link">Hoe het werkt</a>
+            <a href="#" class="link">Over HelpR</a>
+            <a href="#" class="link">Puntensysteem</a>
+            <a href="#" class="link">Contact</a>
         </div>
     </div>
 </div>

@@ -58,3 +58,20 @@
 .language-options button:hover {
   background-color: #0056b3;
 }
+
+/* links styling */
+.link-container {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px; /* ruimte tussen de links */
+}
+
+.link-container .link {
+  color: #e36d32;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-container .link:hover {
+  text-decoration: underline;
+}
