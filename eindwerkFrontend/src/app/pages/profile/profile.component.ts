@@ -1,11 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
 //import json pipe
-import { JsonPipe } from '@angular/common';
-
 @Component({
   selector: 'app-profile',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
@@ -17,7 +15,7 @@ export class ProfileComponent {
   ngOnInit() {
     this.databaseService.GetProfile().then(jobs => {
       console.log(jobs);
-      this.jobs.set(jobs['results']);
+      this.jobs.set(jobs);
     });
   }
   

@@ -16,6 +16,5 @@ export class UsersService {
       console.error('Error fetching users:', error);
       return [];
     }
-   
   }
 }
