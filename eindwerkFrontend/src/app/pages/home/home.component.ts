@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 // import json pipe
-import { UsersService } from '../../services/user.service';
-
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-home',
@@ -13,36 +12,36 @@ import { UsersService } from '../../services/user.service';
 
 export class HomeComponent {
 
-  constructor(private usersService: UsersService) { }
-  users = signal<any[]>([]);
+  constructor(private databaseService: DatabaseService) { }
+  jobs = signal<any[]>([])
 
   mainProgressBar = 0;
 
-  updateMainProgressBar(amount: number): void {
-    this.mainProgressBar += amount;
-    if (this.mainProgressBar > 90) {
-      this.mainProgressBar = 90;
-      this.popup();
+updateMainProgressBar(jobFee: number): void {
+  if (this.mainProgressBar < 100) {
+    const percentageToAdd = jobFee * 0.1; 
+    this.mainProgressBar += percentageToAdd;
+
+    if (this.mainProgressBar >= 100) {
+      this.mainProgressBar = 100;  
+      this.popup();    
     }
   }
-  showCompletePopup() {
-    alert('Voortgang is voltooid!');
-    this.mainProgressBar = 0;
-  }
+}
 
   popup() {
     const popup = document.getElementById('popup');
     if (popup) {
       popup.style.display = 'flex';
     }
+    this.mainProgressBar = 0;
   }
   ngOnInit() {
-    this.usersService.getUsers().then(users => {
-      console.log(users);
-      this.users.set(users['results']);
+    this.databaseService.GetProfile().then(jobs => {
+      console.log(jobs);
+      this.jobs.set(jobs);
     });
 
   }
 
-  
 }

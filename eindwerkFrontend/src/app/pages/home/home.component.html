@@ -1,26 +1,27 @@
 <div class="main-progress-bar-container">
     <div class="main-progress-bar" [style.width.%]="mainProgressBar"></div>
   </div>
-
-@for (user of users(); track user.id) {
+      
+@for (job of jobs(); track job.id) {
     
     <div class ="post-container">
         <div class="post-header">
-            <img class="profile-picture" src="{{user.picture.thumbnail}}" alt="">
+            <img class="profile-picture" src="" alt="">
             <div class="user-details">
-                <div class="name">{{user.name.first}} {{user.name.last}} </div>
-                <div class="username">{{user.login.username}} </div>
+                <div class="name">{{job.user.firstname}} {{job.user.lastname}} </div>
+                <div class="username"><p>{{job.user.lastname}}.{{job.user.firstname}}</p> </div>
             </div>
         </div>
         <div class="post-info">
             <div class="zoekertje">
-                <p>Ik zoek een persoon om te helpen met een taak.</p>
+                <p><strong>{{job.title}} - {{job.fee}}€</strong></p>
+                <p>{{job.description}}</p>
             </div>
             <div class="post-locatie">
                 <p><strong>Location:</strong> Genk</p>
             </div>
         </div>
-        <button (click)="updateMainProgressBar(10)" class="add-progress-btn">Voeg taak toe</button>
+        <button (click)="updateMainProgressBar(job.fee)" class="add-progress-btn">Doe taak!</button>
 
         <div id="popup" class="popup-container">
             <div class="popup-content">
