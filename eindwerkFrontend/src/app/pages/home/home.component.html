@@ -1,34 +1,48 @@
 <div class="main-progress-bar-container">
     <div class="main-progress-bar" [style.width.%]="mainProgressBar"></div>
   </div>
-      
-@for (job of jobs(); track job.id) {
-    
-    <div class ="post-container">
-        <div class="post-header">
-            <img  class ="profile-picture" src="user.png" alt="Logo">
-            <div class="user-details">
-                <div class="name">{{job.user.firstname}} {{job.user.lastname}} </div>
-                <div class="username"><p>{{job.user.lastname}}.{{job.user.firstname}}</p> </div>
-            </div>
-        </div>
-        <div class="post-info">
-            <div class="zoekertje">
-                <p><strong>{{job.title}} - {{job.fee}}€</strong></p>
-                <p>{{job.description}}</p>
-            </div>
-            <div class="post-locatie">
-                <p><strong>Location:</strong> Genk</p>
-            </div>
-        </div>
-        <button (click)="updateMainProgressBar(job.fee)" class="add-progress-btn">Doe taak!</button>
+  
 
-        <div id="popup" class="popup-container">
-            <div class="popup-content">
-              <p class="popup-text">Proficiat! De buurt krijgt een groot feest!</p>
-              <button class ="close-button" onclick="document.getElementById('popup').style.display = 'none';">Close</button>
-            </div>
+  <button (click)="showPostPopup()">Create Post</button>
+  
+
+  <app-post-popup
+    [class.visible]="isPostPopupVisible"
+    [isVisible]="isPostPopupVisible"
+    (postCreated)="handlePostCreated($event)"
+    (closePopup)="hidePostPopup()"
+  ></app-post-popup>
+  
+  @for (job of jobs(); track job.id) {
+    <div class="post-container">
+      <div class="post-header">
+        <img class="profile-picture" src="user.png" alt="Logo">
+        <div class="user-details">
+          <div class="name">{{ job.user?.firstname || 'Onbekende' }} {{ job.user?.lastname || '' }}</div>
+          <div class="username">
+            <p>{{ job.user?.lastname || 'User' }}.{{ job.user?.firstname || 'Anon' }}</p>
+          </div>
         </div>
-        
+      </div>
+  
+      <div class="post-info">
+        <div class="zoekertje">
+          <p><strong>{{ job.title }} - {{ job.fee }}€</strong></p>
+          <p>{{ job.description }}</p>
+        </div>
+        <div class="post-locatie">
+          <p><strong>Location:</strong> Genk</p>
+        </div>
+      </div>
+  
+      <button (click)="updateMainProgressBar(job.fee)" class="add-progress-btn">Doe taak!</button>
+  
+      <div id="popup" class="popup-container">
+        <div class="popup-content">
+          <p class="popup-text">Proficiat! De buurt krijgt een groot feest!</p>
+          <button class="close-button" (click)="hidePostPopup()">Close</button>
+        </div>
+      </div>
     </div>
-}
+  }
+  

@@ -3,6 +3,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PostPopupComponent } from './post-popup/post-popup.component';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { AuthService } from './services/auth.service';
     RouterOutlet,
     RouterLink,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PostPopupComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -22,7 +24,9 @@ export class AppComponent {
   title = 'HelpR';
   isLoginPopupVisible = false;
   isRegisterPopupVisible = false;
+  isPostPopupVisible = false; 
   errorMessage = '';
+  posts: any[] = [];
 
   constructor(private authService: AuthService) {}
 
@@ -64,7 +68,7 @@ export class AppComponent {
     lastname: string;
     email: string;
     password: string;
-    password_confirmation: string; // Voeg dit veld ook hier toe
+    password_confirmation: string;
   }): void {
     this.authService.register(data).subscribe({
       next: (response) => {
@@ -74,7 +78,24 @@ export class AppComponent {
       error: (err) => {
         this.errorMessage = 'Registration failed. Please try again.';
         console.error('Registration error:', err);
-      },
+      }
     });
+  }
+
+  // Post-pop-up logica
+  showPostPopup(): void {
+    console.log('Post knop geklikt');
+    this.isPostPopupVisible = true;
+  }
+
+  hidePostPopup(): void {
+    console.log('Post popup gesloten');
+    this.isPostPopupVisible = false;
+  }
+
+  handlePostCreated(newPost: any): void {
+    console.log('Nieuwe post aangemaakt:', newPost);
+    this.posts.unshift(newPost);
+    this.hidePostPopup();
   }
 }
