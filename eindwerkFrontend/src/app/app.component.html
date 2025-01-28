@@ -25,14 +25,11 @@
             
 
             <button (click)="showLoginPopup()">Login</button>
+            <button class="register" (click)="showRegisterPopup()">Register</button>
 
 
         </div>
 
-        <div class="header-logo">
-            <img src="user.png" alt="Logo">
-            <button (click)="showLoginPopup()">Login</button>
-            <button (click)="showRegisterPopup()">Register</button>
             <app-login
               *ngIf="isLoginPopupVisible"
               [isVisible]="isLoginPopupVisible"
@@ -46,7 +43,6 @@
                 (register)="handleRegister($event)"
                 (close)="hideRegisterPopup()">
             </app-register>
-          </div>
           
 
     </nav>
@@ -63,7 +59,7 @@
                 <option value="5km">5km</option>
             </select>
 
-            <button type="submit">Zoeken</button>
+            <button class="zoek" type="submit">Zoeken</button>
         </div>
     </nav>
     
