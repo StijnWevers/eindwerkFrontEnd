@@ -21,7 +21,9 @@
                 <img src="bel.png" alt="Notifications"></a>
             <a routerLink="/zoeken" class="Zoeken">Zoeken</a>
             <a routerLink="/settings" class="Instellingen">Instellingen</a>
-            <a routerLink="/post" class="Post">Post</a>
+            <a (click)="showPostPopup()" class="Post">Post</a>
+            
+
             
 
             <button (click)="showLoginPopup()">Login</button>
@@ -30,6 +32,10 @@
 
         </div>
 
+        
+        <main>
+           
+          </main>
             <app-login
               *ngIf="isLoginPopupVisible"
               [isVisible]="isLoginPopupVisible"
@@ -66,6 +72,12 @@
     <div class="content-wrapper p-4">
         <router-outlet></router-outlet>
     </div>
+    <app-post-popup
+        [class.visible]="isPostPopupVisible"
+        [isVisible]="isPostPopupVisible"
+        (postCreated)="handlePostCreated($event)"
+        (closePopup)="hidePostPopup()"
+    ></app-post-popup>
 
 
     <footer>
