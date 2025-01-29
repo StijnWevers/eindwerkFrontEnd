@@ -1,0 +1,23 @@
+.about-us {
+    text-align: center;
+    padding: 100px 150px 100px 150px;  
+}
+
+.about-us-titel {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.about-us-tekst {
+    font-size: 20px;
+    color: #000000;
+}
+
+.about-us-footer {
+    font-size: 20px;
+    color: #000000;   
+    font-style: italic;
+    font-weight: 500;
+    margin-top: 100px;
+}

@@ -1,0 +1,29 @@
+.contact {
+    text-align: center;
+    padding: 100px 150px 100px 150px;
+}
+
+.contact-titel {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.contact-tekst {
+    font-size: 20px;
+    color: #000000;
+}
+
+.contact-contact {
+    font-size: 30px;
+    color: #000000;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+.contact-info {
+    font-size: 20px;
+    color: #000000;
+    margin-top: 10px;
+    line-height: 50px;
+}
