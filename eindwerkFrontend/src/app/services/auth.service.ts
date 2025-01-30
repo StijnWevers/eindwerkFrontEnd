@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root',
@@ -38,10 +40,19 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/logout`, {}).pipe(
+    const token = this.getToken();
+    if (!token) {
+      console.warn('Geen token gevonden, gebruiker is waarschijnlijk al uitgelogd.');
+      return throwError(() => new Error('Geen token gevonden'));
+    }
+  
+    const headers = { Authorization: `Bearer ${token}` };
+  
+    return this.http.post(`${this.apiUrl}/auth/logout`, {}, { headers }).pipe(
       tap(() => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('token'); 
         console.log('Logout successful');
+        window.location.reload(); 
       }),
       catchError((error) => {
         console.error('Logout failed', error);
@@ -49,6 +60,7 @@ export class AuthService {
       })
     );
   }
+  
 
   getToken(): string | null {
     return localStorage.getItem('token');
@@ -56,5 +68,17 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+  getUserProfile(): Observable<any> {
+    const token = this.getToken();
+    if (!token) {
+      return new Observable(observer => observer.error('Geen token gevonden'));
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get(`${this.apiUrl}/auth/user`, { headers });
   }
 }
