@@ -16,8 +16,7 @@
         <div class="header-buttons">
             <a routerLink="/home" class="Home">Home</a>
             <a routerLink="/profile" class="profile">Profile</a>
-            <a routerLink="/messages" class="Berichten">Berichten</a>
-            
+
             <a routerLink="/settings" class="Instellingen">Instellingen</a>
             <a (click)="showPostPopup()" class="Post">Post</a>
             
@@ -84,15 +83,15 @@
             <div class="footer-column">
                 <h4>PRODUCT</h4>
                 <ul>
-                    <li><a href="#">Hoe het werkt</a></li>
-                    <li><a href="#">Puntensysteem</a></li>
+                    <li><a routerLink="/footer/product/how-it-works">Hoe het werkt</a></li>
+                    <li><a routerLink="/footer/product/puntensysteem">Puntensysteem</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>BEDRIJF</h4>
                 <ul>
-                    <li><a href="#">Over HelpR</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a routerLink="/footer/bedrijf/about-us">About Us</a></li>
+                    <li><a routerLink="/footer/bedrijf/contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-column">
