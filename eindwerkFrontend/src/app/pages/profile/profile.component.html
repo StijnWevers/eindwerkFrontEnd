@@ -1,21 +1,19 @@
-@for (job of jobs(); track job.id) {
-    
-    <div class="profile-container">
-        <div class="profile-header">
-            <img src="" alt="Profielfoto" class="profile-picture" />
-            <h1>{{job.id}}<!--{{user.name.last}}  --></h1>
-            <p><!--{{ user.email }}--></p>
-        </div>
-
-        <div class="profile-info">
-            <h2>Persoonlijke Informatie</h2>
-            <ul>
-                <li><strong>Gebruikersnaam:</strong> test<!-- {{user.login.username}}--></li>
-                <li><strong>Telefoonnummer:</strong> Test<!--{{ user.phone }}--></li>
-                <li><strong>Locatie:</strong> test<!--{{ user.location.city }}--></li>
-            </ul>
-        </div>
-
-        <button class="edit-button" (click)="editProfile()">Profiel Bewerken</button>
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="user.png" alt="Profielfoto" class="profile-picture" />
+        <h1>{{ user()?.firstname || 'Niet ingelogd' }} {{ user()?.lastname || '' }}</h1>
+        <p>{{ user()?.email || 'Geen e-mail beschikbaar' }}</p>
     </div>
-}
+
+    <div class="profile-info">
+        <h2>Persoonlijke Informatie</h2>
+        <ul>
+            <li><strong>Gebruikersnaam:</strong> {{ user()?.lastname || 'Anon' }}.{{ user()?.firstname || 'User' }}</li>
+            <li><strong>Locatie:</strong> Genk</li>
+        </ul>
+    </div>
+</div>
+
+<div class="not-logged-in" [class.hidden]="user()">
+    <p>Je bent niet ingelogd. <a routerLink="/login">Login hier</a></p>
+</div>

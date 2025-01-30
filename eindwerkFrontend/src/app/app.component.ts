@@ -24,11 +24,23 @@ export class AppComponent {
   title = 'HelpR';
   isLoginPopupVisible = false;
   isRegisterPopupVisible = false;
-  isPostPopupVisible = false; 
+  isPostPopupVisible = false;
   errorMessage = '';
   posts: any[] = [];
 
   constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.updateBodyClass();
+  }
+
+  updateBodyClass() {
+    if (this.authService.isLoggedIn()) {
+      document.body.classList.add('logged-in');
+    } else {
+      document.body.classList.remove('logged-in');
+    }
+  }
 
   showLoginPopup(): void {
     this.isLoginPopupVisible = true;
@@ -42,13 +54,12 @@ export class AppComponent {
 
   handleLogin(credentials: { email: string; password: string }): void {
     this.authService.login(credentials.email, credentials.password).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response);
+      next: () => {
         this.hideLoginPopup();
+        this.updateBodyClass();
       },
-      error: (err) => {
+      error: () => {
         this.errorMessage = 'Login failed. Please check your email and password.';
-        console.error('Login error:', err);
       }
     });
   }
@@ -63,39 +74,31 @@ export class AppComponent {
     this.errorMessage = '';
   }
 
-  handleRegister(data: {
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
-    password_confirmation: string;
-  }): void {
+  handleRegister(data: { firstname: string; lastname: string; email: string; password: string; password_confirmation: string }): void {
     this.authService.register(data).subscribe({
-      next: (response) => {
-        console.log('Registration successful:', response);
-        this.hideRegisterPopup();
-      },
-      error: (err) => {
+      next: () => this.hideRegisterPopup(),
+      error: () => {
         this.errorMessage = 'Registration failed. Please try again.';
-        console.error('Registration error:', err);
       }
     });
   }
-
-  // Post-pop-up logica
+  //Post-pop-up logica 
   showPostPopup(): void {
-    console.log('Post knop geklikt');
     this.isPostPopupVisible = true;
   }
 
   hidePostPopup(): void {
-    console.log('Post popup gesloten');
     this.isPostPopupVisible = false;
   }
 
   handlePostCreated(newPost: any): void {
-    console.log('Nieuwe post aangemaakt:', newPost);
     this.posts.unshift(newPost);
     this.hidePostPopup();
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe(() => {
+      this.updateBodyClass();
+    });
   }
 }

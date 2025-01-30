@@ -1,26 +1,34 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { AuthService } from '../../services/auth.service'; 
 import { DatabaseService } from '../../services/database.service';
-//import json pipe
+
 @Component({
   selector: 'app-profile',
+  standalone: true,
   imports: [],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  user = signal<any>(null);
+  jobs = signal<any[]>([]);
 
-  constructor (private databaseService: DatabaseService) { }
+  constructor(private authService: AuthService, private databaseService: DatabaseService) {}
 
-  jobs = signal<any[]>([])
-  ngOnInit() {
+  ngOnInit(): void {
+    this.authService.getUserProfile().subscribe({
+      next: (userData) => {
+        console.log('Gebruiker:', userData);
+        this.user.set(userData); 
+      },
+      error: (err) => {
+        console.error('Fout bij ophalen profiel:', err);
+      }
+    });
+
     this.databaseService.GetProfile().then(jobs => {
       console.log(jobs);
       this.jobs.set(jobs);
     });
-  }
-  
-  editProfile() {
-    alert('Profiel Bewerken werkt nog niet!');
-    // hier kan je fomulier of functionaliteit toevoegen
   }
 }

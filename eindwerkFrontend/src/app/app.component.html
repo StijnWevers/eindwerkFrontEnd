@@ -16,6 +16,7 @@
         <div class="header-buttons">
             <a routerLink="/home" class="Home">Home</a>
             <a routerLink="/profile" class="profile">Profile</a>
+
             <a routerLink="/settings" class="Instellingen">Instellingen</a>
             <a (click)="showPostPopup()" class="Post">Post</a>
             
@@ -24,6 +25,7 @@
 
             <button (click)="showLoginPopup()">Login</button>
             <button class="register" (click)="showRegisterPopup()">Register</button>
+            <button class="logout-btn" (click)="logout()">Logout</button>
 
 
         </div>
