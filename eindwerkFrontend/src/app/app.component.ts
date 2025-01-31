@@ -45,20 +45,22 @@ export class AppComponent {
   showLoginPopup(): void {
     this.isLoginPopupVisible = true;
     this.errorMessage = '';
-    this.login(); 
+    
   }
 
   hideLoginPopup(): void {
     this.isLoginPopupVisible = false;
     this.errorMessage = '';
+
   }
 
   handleLogin(credentials: { email: string; password: string }): void {
     this.authService.login(credentials.email, credentials.password).subscribe({
       next: () => {
         this.hideLoginPopup();
+        this.login();
         this.updateBodyClass();
-      },
+      }, 
       error: () => {
         this.errorMessage = 'Login failed. Please check your email and password.';
       }
