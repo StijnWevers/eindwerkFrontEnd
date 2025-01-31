@@ -79,7 +79,7 @@ export class HomeComponent {
       if (isVisible && text.toLowerCase().includes(searchTerm) && resultCount < this.maxResults) {
         const resultItem = this.renderer.createElement('li');
         const resultText = this.renderer.createText(
-          `${text.substring(0, 50)}...`
+          `${text.substring(0, 50)}`
         );
         this.renderer.appendChild(resultItem, resultText);
 
