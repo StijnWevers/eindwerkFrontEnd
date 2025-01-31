@@ -2,7 +2,10 @@
     <div class="profile-header">
         <img src="user.png" alt="Profielfoto" class="profile-picture" />
         <h1>{{ user()?.firstname || 'Niet ingelogd' }} {{ user()?.lastname || '' }}</h1>
-        <p>{{ user()?.email || 'Geen e-mail beschikbaar' }}</p>
+        <p>{{ user()?.email || 'Geen e-mail beschikbaar' }}</p> 
+        <div class="not-logged-in" >
+            <p *ngIf="!user()">Je bent niet ingelogd.</p>
+        </div> 
     </div>
 
     <div class="profile-info">
@@ -12,8 +15,4 @@
             <li><strong>Locatie:</strong> Genk</li>
         </ul>
     </div>
-</div>
-
-<div class="not-logged-in" [class.hidden]="user()">
-    <p>Je bent niet ingelogd. <a routerLink="/login">Login hier</a></p>
 </div>
