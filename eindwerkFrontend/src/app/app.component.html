@@ -19,14 +19,12 @@
 
             <a routerLink="/settings" class="Instellingen">Instellingen</a>
             <a (click)="showPostPopup()" class="Post">Post</a>
+
+            <button [ngClass]="{'hidden': isLoggedIn}" (click)="showLoginPopup()">Login</button>
+
+            <button [ngClass]="{'hidden': isLoggedIn}" (click)="showRegisterPopup()">Register</button>
             
-
-            
-
-            <button (click)="showLoginPopup()">Login</button>
-            <button class="register" (click)="showRegisterPopup()">Register</button>
-            <button class="logout-btn" (click)="logout()">Logout</button>
-
+            <button [ngClass]="{'hidden': !isLoggedIn}" (click)="logout()">Logout</button>
 
         </div>
 

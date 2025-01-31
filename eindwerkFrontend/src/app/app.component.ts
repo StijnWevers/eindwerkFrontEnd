@@ -45,6 +45,7 @@ export class AppComponent {
   showLoginPopup(): void {
     this.isLoginPopupVisible = true;
     this.errorMessage = '';
+    this.login(); 
   }
 
   hideLoginPopup(): void {
@@ -82,7 +83,6 @@ export class AppComponent {
       }
     });
   }
-  //Post-pop-up logica 
   showPostPopup(): void {
     this.isPostPopupVisible = true;
   }
@@ -100,5 +100,12 @@ export class AppComponent {
     this.authService.logout().subscribe(() => {
       this.updateBodyClass();
     });
+    this.isLoggedIn = false;
   }
+
+ isLoggedIn: boolean = false;
+
+ login() {
+   this.isLoggedIn = true;
+ }
 }
