@@ -202,3 +202,7 @@ footer {
   z-index: 1000;
 }
 
+/* Hidden class to hide buttons */
+.hidden {
+  display: none;
+}
