@@ -1,3 +1,20 @@
+<nav>
+  <div class="search-you">
+    <div class="search-container">
+      <input id="search-input" type="text" placeholder="Zoek" (input)="searchPage($event)" />
+      <ul id="search-results"></ul>
+    </div>
+
+      <select name="dropdown" class="locatie">
+          <option value="500m">500m</option>
+          <option value="1km">1km</option>
+          <option value="1.5km">1.5km</option>
+          <option value="2km">2km</option>
+          <option value="5km">5km</option>
+      </select>
+  </div>
+</nav>
+
 <div class="main-progress-bar-container">
     <div class="main-progress-bar" [style.width.%]="mainProgressBar"></div>
   </div>
