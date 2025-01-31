@@ -45,7 +45,6 @@ export class AppComponent {
   showLoginPopup(): void {
     this.isLoginPopupVisible = true;
     this.errorMessage = '';
-    this.login(); 
   }
 
   hideLoginPopup(): void {
@@ -57,6 +56,7 @@ export class AppComponent {
     this.authService.login(credentials.email, credentials.password).subscribe({
       next: () => {
         this.hideLoginPopup();
+        this.login(); 
         this.updateBodyClass();
       },
       error: () => {
