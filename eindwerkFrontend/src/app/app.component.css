@@ -1,6 +1,6 @@
 /* Header Styles */
 .header {
-  background-color:  hsl(25, 96%, 37%);
+  background-color:  #8B0000;
   color: white;
   padding: 12px 12px;
   position: fixed;
@@ -75,7 +75,11 @@
 
 .header-buttons a:hover {
   background-color: #e0e0e0;
-  color: #de571d;
+  color: #B22222;
+}
+.header-buttons button:hover {
+  background-color: #e0e0e0;
+  color: #B22222;
 }
 
 .header-buttons .bel img {
@@ -113,7 +117,7 @@
 
 /* Footer Styles */
 footer {
-  background-color:  hsl(25, 96%, 37%);
+  background-color:  #8B0000;
   color: white;
   left: 500px;
   right: 0;

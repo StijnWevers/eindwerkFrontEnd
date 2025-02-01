@@ -11,7 +11,7 @@
   
   /* De werkelijke voortgangsbalk */
   .main-progress-bar {
-    background:  hsl(23, 78%, 50%);
+    background:  #8B0000;
     width: 0%;
     height: 100%;
     transition: width 0.3s ease;
@@ -22,7 +22,7 @@
   /* Styling voor de knop om de voortgang toe te voegen */
   .add-progress-btn {
     margin-top: 10px;
-    background-color: #a25016;
+    background-color: #8B0000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -31,7 +31,7 @@
   
   /* Hover-effect voor de knop */
   .add-progress-btn:hover {
-    background-color: #de571d;
+    background-color:  #B22222;
   }
   
   /* Pop-up container */
@@ -179,7 +179,7 @@ nav {
   background-color: #f1f1f1;
 }
 .createPost {
-  background-color: #a25016; 
+  background-color: #8B0000; 
     color: white;
     border: none;
     padding: 15px 25px; 
@@ -194,9 +194,9 @@ nav {
 }
 
 .createPost:hover {
-  background-color: #de571d; 
+  background-color: #B22222; 
 }
 
 .createPost:active {
-  background-color: #de571d; 
+  background-color: #B22222; 
 }
