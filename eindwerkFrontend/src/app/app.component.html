@@ -18,7 +18,8 @@
             <a routerLink="/profile" class="profile">Profile</a>
 
             <a routerLink="/settings" class="Instellingen">Instellingen</a>
-            <a (click)="showPostPopup()" class="Post">Post</a>
+
+
 
             <button [ngClass]="{'hidden': isLoggedIn}" (click)="showLoginPopup()">Login</button>
 
@@ -53,12 +54,7 @@
     <div class="content-wrapper p-4">
         <router-outlet></router-outlet>
     </div>
-    <app-post-popup
-        [class.visible]="isPostPopupVisible"
-        [isVisible]="isPostPopupVisible"
-        (postCreated)="handlePostCreated($event)"
-        (closePopup)="hidePostPopup()"
-    ></app-post-popup>
+
 
 
     <footer>

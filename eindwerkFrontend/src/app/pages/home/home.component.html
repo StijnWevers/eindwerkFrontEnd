@@ -20,7 +20,7 @@
   </div>
   
 
-  <button (click)="showPostPopup()">Create Post</button>
+  <button (click)="showPostPopup()" class="createPost">Create Post</button>
   
 
   <app-post-popup
@@ -32,25 +32,26 @@
   
   @for (job of jobs(); track job.id) {
     <div class="post-container">
-      <div class="post-header">
-        <img class="profile-picture" src="user.png" alt="Logo">
-        <div class="user-details">
-          <div class="name">{{ job.user?.firstname || 'Onbekende' }} {{ job.user?.lastname || '' }}</div>
-          <div class="username">
-            <p>{{ job.user?.lastname || 'User' }}.{{ job.user?.firstname || 'Anon' }}</p>
-          </div>
+        <div class="post-header">
+            <img class="profile-picture" src="user.png" alt="Logo">
+            <div class="user-details">
+                <div class="name">
+                    {{ job.user?.firstname || 'Onbekende' }} {{ job.user?.lastname || '' }}
+                </div>
+                <div class="username">
+                    <p>{{ job.user?.lastname || 'User' }}.{{ job.user?.firstname || 'Anon' }}</p>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <div class="post-info">
-        <div class="zoekertje">
-          <p><strong>{{ job.title }} - {{ job.fee }}€</strong></p>
-          <p>{{ job.description }}</p>
+        <div class="post-info">
+            <div class="zoekertje">
+                <p><strong>{{ job.title }} - {{ job.fee }}€</strong></p>
+                <p>{{ job.description }}</p>
+            </div>
+            <div class="post-locatie">
+                <p><strong>Location:</strong> Genk</p>
+            </div>
         </div>
-        <div class="post-locatie">
-          <p><strong>Location:</strong> Genk</p>
-        </div>
-      </div>
   
       <button (click)="updateMainProgressBar(job.fee)" class="add-progress-btn">Doe taak!</button>
   

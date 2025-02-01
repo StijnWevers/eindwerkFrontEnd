@@ -27,15 +27,17 @@ export class AppComponent {
   isPostPopupVisible = false;
   errorMessage = '';
   posts: any[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.updateBodyClass();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   updateBodyClass() {
-    if (this.authService.isLoggedIn()) {
+    if (this.isLoggedIn) {
       document.body.classList.add('logged-in');
     } else {
       document.body.classList.remove('logged-in');
@@ -56,7 +58,7 @@ export class AppComponent {
     this.authService.login(credentials.email, credentials.password).subscribe({
       next: () => {
         this.hideLoginPopup();
-        this.login(); 
+        this.isLoggedIn = true;
         this.updateBodyClass();
       },
       error: () => {
@@ -83,8 +85,13 @@ export class AppComponent {
       }
     });
   }
+
   showPostPopup(): void {
-    this.isPostPopupVisible = true;
+    if (this.isLoggedIn) {
+      this.isPostPopupVisible = true;
+    } else {
+      alert('Je moet ingelogd zijn om een post te plaatsen.');
+    }
   }
 
   hidePostPopup(): void {
@@ -92,20 +99,21 @@ export class AppComponent {
   }
 
   handlePostCreated(newPost: any): void {
-    this.posts.unshift(newPost);
+    const user = this.authService.getUser();
+    if (!user) {
+      alert('Je moet ingelogd zijn om een post te plaatsen.');
+      return;
+    }
+
+    const postWithUser = { ...newPost, user: { firstname: user.firstname, lastname: user.lastname } };
+    this.posts.unshift(postWithUser);
     this.hidePostPopup();
   }
 
   logout(): void {
     this.authService.logout().subscribe(() => {
+      this.isLoggedIn = false;
       this.updateBodyClass();
     });
-    this.isLoggedIn = false;
   }
-
- isLoggedIn: boolean = false;
-
- login() {
-   this.isLoggedIn = true;
- }
 }
