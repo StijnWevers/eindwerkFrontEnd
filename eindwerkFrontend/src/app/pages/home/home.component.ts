@@ -25,7 +25,9 @@ export class HomeComponent {
 
       if (this.mainProgressBar >= 100) {
         this.mainProgressBar = 100;
-        this.popup(); 
+        setTimeout(() => {
+          this.popup(); 
+        }, 1000); 
       }
     }
   }
@@ -35,9 +37,20 @@ export class HomeComponent {
     if (popup) {
       popup.style.display = 'flex';
     }
-    this.mainProgressBar = 0;
+    setTimeout(() => {
+      this.mainProgressBar = 0;
+    }, 3000);
   }
 
+  hidePopup(): void {
+    const popup = document.getElementById('popup');
+    if (popup) {
+      popup.style.display = 'none';
+      console.log('Popup verborgen');
+    }
+  }
+
+ 
   ngOnInit() {
     this.databaseService.GetProfile().then((jobs) => {
       console.log(jobs); 
