@@ -14,8 +14,7 @@ import { AuthService } from './services/auth.service';
     RouterOutlet,
     RouterLink,
     LoginComponent,
-    RegisterComponent,
-    PostPopupComponent
+    RegisterComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -56,16 +55,27 @@ export class AppComponent {
 
   handleLogin(credentials: { email: string; password: string }): void {
     this.authService.login(credentials.email, credentials.password).subscribe({
-      next: () => {
-        this.hideLoginPopup();
-        this.isLoggedIn = true;
-        this.updateBodyClass();
+      next: (response: any) => {
+        if (!response.token) {
+          alert(response.error || 'Ongeldige inloggegevens. Controleer je e-mailadres en wachtwoord.');
+          console.error('Login response error:', response);
+        } else {
+          this.hideLoginPopup();
+          this.isLoggedIn = true;
+          this.updateBodyClass();
+        }
       },
-      error: () => {
-        this.errorMessage = 'Login failed. Please check your email and password.';
+      error: (err) => {
+        if (err.status === 401 || err.status === 422) {
+          alert('Ongeldige inloggegevens. Controleer je e-mailadres en wachtwoord.');
+        } else {
+          alert(err.error?.message || 'Inloggen mislukt. Probeer het opnieuw.');
+        }
+        console.error('Login error:', err);
       }
     });
   }
+  
 
   showRegisterPopup(): void {
     this.isRegisterPopupVisible = true;
@@ -79,12 +89,25 @@ export class AppComponent {
 
   handleRegister(data: { firstname: string; lastname: string; email: string; password: string; password_confirmation: string }): void {
     this.authService.register(data).subscribe({
-      next: () => this.hideRegisterPopup(),
-      error: () => {
-        this.errorMessage = 'Registration failed. Please try again.';
+      next: (response: any) => {
+        if (response.error) {
+          alert(response.error);
+          console.error('Register response error:', response);
+        } else {
+          this.hideRegisterPopup();
+        }
+      },
+      error: (err) => {
+        if (err.status === 401 || err.status === 422) {
+          alert('Er bestaat al een account met dit e-mailadres, of de registratiegegevens zijn ongeldig.');
+        } else {
+          alert(err.error?.message || 'Registratie mislukt. Probeer het opnieuw.');
+        }
+        console.error('Register error:', err);
       }
     });
   }
+  
 
   showPostPopup(): void {
     if (this.isLoggedIn) {
