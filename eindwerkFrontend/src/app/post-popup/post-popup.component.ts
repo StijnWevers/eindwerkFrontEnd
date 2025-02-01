@@ -18,15 +18,29 @@ export class PostPopupComponent {
   fee: number | null = null;
 
   createPost() {
-    if (this.title && this.description && this.fee !== null && this.fee > 0) {
-      const newPost = { title: this.title, description: this.description, fee: this.fee };
-      this.postCreated.emit(newPost);
-      this.closePopup.emit();
-      this.resetFields();
-    } else {
-      alert('Vul alle velden correct in!');
-    }
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  if (!user || !user.email) {
+    alert('Je moet ingelogd zijn om een post te plaatsen.');
+    return;
   }
+
+  if (this.title && this.description && this.fee !== null && this.fee > 0) {
+    const newPost = {
+      title: this.title,
+      description: this.description,
+      fee: this.fee,
+      user: { firstname: user.firstname, lastname: user.lastname }
+    };
+
+    this.postCreated.emit(newPost);
+    this.closePopup.emit();
+    this.resetFields();
+  } else {
+    alert('Vul alle velden correct in!');
+  }
+}
+
 
   cancel() {
     console.log('Post annuleren');

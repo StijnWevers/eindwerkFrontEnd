@@ -18,6 +18,9 @@ export class AuthService {
       tap((response: any) => {
         if (response.token) {
           localStorage.setItem('token', response.token);
+          if (response.user) {
+            localStorage.setItem('user', JSON.stringify(response.user));
+          }
         }
       }),
       catchError((error) => {
@@ -26,6 +29,7 @@ export class AuthService {
       })
     );
   }
+  
 
   register(data: { firstname: string; lastname: string; email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, data).pipe(
@@ -51,6 +55,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/auth/logout`, {}, { headers }).pipe(
       tap(() => {
         localStorage.removeItem('token'); 
+        localStorage.removeItem('user'); 
         console.log('Logout successful');
         window.location.reload(); 
       }),
@@ -61,7 +66,12 @@ export class AuthService {
     );
   }
   
-
+  
+  getUser(): any {
+    const userData = localStorage.getItem('user');
+    return userData ? JSON.parse(userData) : null;
+  }
+  
   getToken(): string | null {
     return localStorage.getItem('token');
   }

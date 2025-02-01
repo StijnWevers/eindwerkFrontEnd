@@ -178,3 +178,25 @@ nav {
 #search-results li:hover {
   background-color: #f1f1f1;
 }
+.createPost {
+  background-color: #a25016; 
+    color: white;
+    border: none;
+    padding: 15px 25px; 
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block; 
+    margin: 20px auto;
+    text-align: center;
+}
+
+.createPost:hover {
+  background-color: #de571d; 
+}
+
+.createPost:active {
+  background-color: #de571d; 
+}
